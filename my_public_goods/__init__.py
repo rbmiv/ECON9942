@@ -9,7 +9,7 @@ Simple provision game - 4 players, 10 rounds, initial endowment of 30 tokens, MP
 class C(BaseConstants):
     NAME_IN_URL = 'my_public_goods'
     PLAYERS_PER_GROUP = 4
-    NUM_ROUNDS = 0
+    NUM_ROUNDS = 4
     MID_ROUND = int(NUM_ROUNDS/2)    #wanted to report the middle round in the Contribute HTML page
                                 # but wasn't sure how to do a mathematical operation in an HTML file
     MULTIPLIER1 = 0.75
