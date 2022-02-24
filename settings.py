@@ -48,10 +48,10 @@ SESSION_CONFIGS = [
         app_sequence=['my_pub_goods'],
     ),
     dict(
-        name='pub_goods_test_2',
-        display_name='my NEW pub goods',
+        name='ben_pub_goods_test',
+        display_name='Bens Public Goods Test',
         num_demo_participants=2,
-        app_sequence=['my_pub_goods'],
+        app_sequence=['my_public_goods'],
     ),
     dict(
         name='second_price_auction',
