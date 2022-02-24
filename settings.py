@@ -50,7 +50,7 @@ SESSION_CONFIGS = [
     dict(
         name='ben_pub_goods_test',
         display_name='Bens Public Goods Test',
-        num_demo_participants=2,
+        num_demo_participants=4,
         app_sequence=['my_public_goods'],
     ),
     dict(
