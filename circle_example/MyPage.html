@@ -1,0 +1,80 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+{% endblock %}
+{% block content %}
+
+    <canvas id="my_canvas" width="500" height="500" style="border: 1px solid #D1D0CE;"></canvas>
+    <br><br>
+    <button type="button" id="btn_down" class="btn btn-primary">decrease</button>
+    <button type="button" id="btn_up" class="btn btn-primary">increase</button>
+
+
+
+
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.1/fabric.js"></script>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+
+            // First we must create our fabric.canvas element
+
+            /** @type { import("fabric/fabric-impl") } */
+            const fabric = window.fabric;
+            const canvas = new fabric.Canvas('my_canvas', {
+                preserveObjectStacking: true,
+                selection: false,
+            });
+
+            // Next we add a circle to the canvas
+
+            let my_circle = new fabric.Circle({
+                originX: 'center',
+                originY: 'center',
+                left: 250,
+                top: 250,
+                radius: 10,
+                fill: '#98AFC7',
+                lockMovementX: 'true',
+                lockMovementY: 'true',
+                width: canvas.width,
+                height: canvas.height,
+
+            })
+            canvas.add(my_circle)
+
+            // Here we add an event listener so that when the "decrease" button is clicked,
+            // we reduce the radius of the circle.
+
+            $("#btn_down").click(function(){
+                my_circle.radius -= 10;
+                my_circle.dirty = true;
+                canvas.renderAll();
+                console.log(my_circle.radius)
+                // the following clause is needed so that we do not try to redraw the circle with a negative radius
+                if (my_circle.radius==0){
+                    $('#btn_down').prop('disabled', true);
+                }
+            });
+
+            // And here we add a similar listener to increase the radius with the other button is clicked.
+
+            $("#btn_up").click(function(){
+                my_circle.radius += 10;
+                my_circle.dirty = true;
+                canvas.renderAll();
+                console.log(my_circle.radius)
+                // the following line is to turn on the 'decrease' button
+                // in case it was turned off when radius==0 in the other button listener
+                $('#btn_down').prop('disabled', false);
+            });
+        });
+
+
+    </script>
+{% endblock %}
+

@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+
+{% block style %}
+    <style>
+        #my_table td {
+           text-align: center;
+        }
+
+        #my_table td.choice_cell:hover {
+            background: #bfd9bf;
+        }
+
+        .selected {
+            background: darkseagreen !important;
+        }
+
+    </style>
+{% endblock %}
+
+
+
+{% block title %}
+    Page title
+{% endblock %}
+{% block content %}
+
+    <table class="table table-bordered" id="my_table">
+        <thead></thead>
+        <tr>
+            <td id="L1" class="choice_cell">{{ L1 }}</td>   <td id="R1" class="choice_cell">{{ R1 }}</td>
+        </tr>
+        <tr>
+            <td id="L2" class="choice_cell">{{ L2 }}</td>   <td id="R2" class="choice_cell">{{ R2 }}</td>
+        </tr>
+        <tr>
+            <td id="L3" class="choice_cell">{{ L3 }}</td>   <td id="R3" class="choice_cell">{{ R3 }}</td>
+        </tr>
+    </table>
+
+    <input type="hidden" name="response" id="response" />
+
+    <button id="submit" class="otree-btn-next btn btn-primary" disabled>Submit</button>
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        let num_rows = {{ num_rows }};
+        let response = new Array(num_rows);
+        let i;
+        for (i=0; i < num_rows; i++)
+        {
+           response[i] = -999;
+        }
+
+        $(document).ready(function() {
+
+            $(".choice_cell").on("click", function () {
+                let id = $(this).attr('id');
+                let row = id.replace(/\D/g, "")
+                let side = id.replace(/[^LR]/g, "")
+
+                if (side == "L") {
+                    response[row-1] = 0
+                    $('#R' + row).removeClass('selected');
+                } else {
+                    response[row-1] = 1
+                    $('#L' + row).removeClass('selected');
+                }
+                $("#response").val(JSON.stringify(response));
+                $(this).addClass( "selected" );
+
+                if (response.includes(-999)) {
+                    $('#submit').prop('disabled', true);
+                } else {
+                    $('#submit').prop('disabled', false);
+                }
+                console.log(response)
+            });
+
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    Round {{ subsession.round_number }} of {{ session.vars.last_round }}
+{% endblock %}
+{% block content %}
+
+    <img src="{% static player.image %}"/>
+
+
+
+    {% next_button %}
+
+{% endblock %}

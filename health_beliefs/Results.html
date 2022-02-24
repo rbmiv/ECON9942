@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Health Beliefs Results
+{% endblock %}
+
+{% block content %}
+    Correct bin: {{ correct_label }}
+    <br>
+    Tokens you allocated to this answer: {{ correct_response }}
+    <br>
+    Your payoff: {{player.payoff}}
+    <br><br>
+    {% next_button %}
+{% endblock %}

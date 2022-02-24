@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    Page title
+{% endblock %}
+{% block content %}
+
+    <p>
+    What is <span id="num_a">{{ player.numA }}</span> + <span id="num_b">{{ player.numB }}</span> ?
+    </p>
+    <input type="number" id="response" min="0" step="1">
+
+    <button type="button" id="btn_test" class="btn btn-primary">Submit</button>
+
+    <br><br>
+    <p>
+    Number correct: <span id="correct">0</span>
+    <br>
+    Number incorrect: <span id="incorrect">0</span>
+    </p>
+    <br><br>
+
+    {# This is how you place a "normal" otree submit button that displays an alternative button label   #}
+    <button class="otree-btn-next btn btn-primary">End Round</button>
+
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        function liveRecv(data) {
+            console.log(data)
+            $('#num_a').text(data['num_a']);
+            $('#num_b').text(data['num_b']);
+            $('#correct').text(data['count_correct']);
+            $('#incorrect').text(data['count_incorrect']);
+        }
+
+        $(document).ready(function() {
+            $("#btn_test").click(function(){
+
+                // Get value from inside text box
+                let str = $('#response').val();
+
+                // Set text box to empty
+                $('#response').val("");
+
+                // Send response to server
+                liveSend(str);
+            });
+        });
+    </script>
+{% endblock %}
+
+
+

@@ -1,0 +1,87 @@
+{{ block title }}
+    Sortable list
+{{ endblock }}
+
+{{block style}}
+    <style>
+        body {
+          padding: 30px;
+        }
+
+        ul {
+          list-style: none;
+        }
+
+        /* ghostClass */
+        .ghost {
+          opacity: .5;
+          background: #C8EBFB;
+        }
+
+
+    </style>
+{{ endblock }}
+
+{{ block content }}
+    Reorder the list to your liking.
+    <br>
+    <br>
+    <div class="d-flex">
+        <ul id="my_list" class="list-group">
+            <li class="list-group-item" value="A">
+                Apple
+            </li>
+            <li class="list-group-item" value="B">
+                Banana
+            </li>
+            <li class="list-group-item" value="C">
+                Cherry
+            </li>
+            <li class="list-group-item" value="D">
+                Durian
+            </li>
+            <li class="list-group-item" value="E">
+                Eggplant
+            </li>
+            <li class="list-group-item" value="F">
+                Fig
+            </li>
+        </ul>
+    </div>
+    <br>
+    {{ next_button }}
+
+    <input type="hidden" name="response" id="response" />
+
+{{ endblock }}
+
+{{ block script }}
+    <script src="{% static 'Sortable.js' %}"></script>
+    <script>
+
+        $( document ).ready(function() {
+
+            let list_to_sort = document.getElementById('my_list');
+            // List
+            Sortable.create(list_to_sort, {
+                animation: 150,
+                ghostClass: 'ghost',
+                onUpdate: function (evt) {
+                    let x = [];
+                    $('#my_list li').each(function() {
+                        let v = $(this).attr('value');
+                        x.push(v);
+                    });
+                    $("#response").val(JSON.stringify(x));
+                },
+            });
+
+
+
+
+
+        });
+
+    </script>
+{{ endblock }}
+

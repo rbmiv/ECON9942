@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    Page title
+{% endblock %}
+{% block content %}
+
+
+    <button class="btn btn-warning" type="button" onclick="liveSend('Hello World!')"> Click me! </button>
+
+
+
+
+    {% formfields %}
+    {% next_button %}
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        function liveRecv(data) {
+            console.log(data)
+        }
+    </script>
+{% endblock %}

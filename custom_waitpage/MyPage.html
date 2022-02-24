@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    Nothing much to see here...
+{% endblock %}
+{% block content %}
+
+    <p>
+        This is where the participant plays the game. Random draw is {{ player.random_draw }}
+    </p>
+
+{{ include 'MyStuff.html'}}
+
+    {% formfields %}
+
+    {% next_button %}
+
+{% endblock %}
