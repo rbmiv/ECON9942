@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         'name': 'health_beliefs_practice',
         'language': 'english',
         'display_name': 'health beliefs practice questions',
-        'num_demo_participants': 3,
+        'num_demo_participants': 15,
         'app_sequence': ['survey', 'health_beliefs'],
         # params format: [ 'question text...',
         #               alpha, beta, num_tokens
