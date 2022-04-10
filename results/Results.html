@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Your Decision Task Results
+{% endblock %}
+
+{% block content %}
+For each task, the correct bin, the corresponding number of tokens you placed in the correct bin, and your resulting
+potential payoff are below. One of the payoffs from these questions will now be selected at random as your final payment
+(in addition to your participation payment). Please continue to see your final payment.
+<br><br>
+<b>Arthritis</b><br>
+Correct bin: {{ label_ar }}<br>
+Tokens you allocated to this answer: {{ answer_ar }}<br>
+Your payoff: {{payoff_ar}}
+<br><br>
+<b>Heart Disease</b><br>
+Correct bin: {{ label_hd }}<br>
+Tokens you allocated to this answer: {{ answer_hd }}<br>
+Your payoff: {{payoff_hd}}
+<br><br>
+<b>Skin Cancer</b><br>
+Correct bin: {{ label_sc }}<br>
+Tokens you allocated to this answer: {{ answer_sc }}<br>
+Your payoff: {{payoff_sc}}
+<br><br>
+<b>Other Cancer</b><br>
+Correct bin: {{ label_oc }}<br>
+Tokens you allocated to this answer: {{ answer_oc }}<br>
+Your payoff: {{payoff_oc}}
+<br><br>
+<b>Diabetes</b><br>
+Correct bin: {{ label_di }}<br>
+Tokens you allocated to this answer: {{ answer_di }}<br>
+Your payoff: {{payoff_di}}
+<br><br>
+<b>Stroke</b><br>
+Correct bin: {{ label_st }}<br>
+Tokens you allocated to this answer: {{ answer_st }}<br>
+Your payoff: {{payoff_st}}
+<br><br>
+<b>Smoking</b><br>
+Correct bin: {{ label_sm }}<br>
+Tokens you allocated to this answer: {{ answer_sm }}<br>
+Your payoff: {{payoff_sm}}
+<br><br>
+
+
+    {% next_button %}
+{% endblock %}

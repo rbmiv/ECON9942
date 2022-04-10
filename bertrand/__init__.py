@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     name_in_url = 'bertrand'
     num_rounds = 1
-    instructions_template = 'bertrand/instructions.html'
+    instructions_template = 'bertrand/Results.html'
     maximum_price = c(100)
 
 

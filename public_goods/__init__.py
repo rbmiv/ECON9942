@@ -21,7 +21,7 @@ class Constants(BaseConstants):
     name_in_url = 'public_goods'
     players_per_group = 3
     num_rounds = 1
-    instructions_template = 'public_goods/instructions.html'
+    instructions_template = 'public_goods/Results.html'
     # """Amount allocated to each player"""
     endowment = c(100)
     multiplier = 2

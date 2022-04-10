@@ -23,7 +23,7 @@ class Constants(BaseConstants):
     name_in_url = 'prisoner'
     players_per_group = 2
     num_rounds = 1
-    instructions_template = 'prisoner/instructions.html'
+    instructions_template = 'prisoner/Results.html'
     # payoff if 1 player defects and the other cooperates""",
     betray_payoff = c(300)
     betrayed_payoff = c(0)

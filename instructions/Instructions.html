@@ -1,0 +1,182 @@
+{{ block title }}
+Decision-Making Task Instructions
+{{ endblock }}
+{{ block content }}
+
+<style>
+    .tab {
+        display: none;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    img {
+  border: 5px solid #555;
+        }
+</style>
+<div class="tab">
+        <p style="font-size:160%;"><b>Example 1:</b></p>
+    <img src="{{ static 'pilot_image_1.png' }}" class="center"/>
+    <br>
+    You have 10 sliders to adjust, and have 100 tokens to allocate.
+    Each slider allows you to allocate tokens to reflect your belief about the answer to this question.
+    You must allocate all 100 tokens in order to submit your decision. As you allocate tokens by adjusting sliders,
+    the payoffs displayed on the screen will change. Your earnings are based on the payoffs that are displayed after
+    you have allocated all 100 tokens.
+    Note that the payoffs shown on the screen will not be accurate unless you have allocated all 100 tokens.
+    <br><br>
+    Where you position each slider depends on your beliefs about the correct answer to the question.
+    In the above example, the tokens you allocate to each bar will naturally reflect your beliefs about life expectancy
+    in the United States. The first bar here corresponds to your belief that the average person in the United States
+    lives between 0 and 10 years. The second bar corresponds to your belief that the average US citizen lives between
+    11 and 20 years, and so on. Each bar here shows the amount of money you earn if the true life expectancy is in the
+    interval shown under the bar.
+    <p>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="1">Next</button>
+    </p>
+</div>
+<div class="tab">
+    <p style="font-size:160%;"><b>Example 2:</b></p>
+    To illustrate how you use these sliders, suppose you believe there is a fair chance the true life expectancy
+    is around 71 to 80 years, but you are not absolutely sure.
+    Then you might allocate the 100 tokens in the following way:
+    <br><br>
+•	25 tokens to the interval 61 to 70 <br>
+•	50 tokens to the interval 71 to 80 <br>
+•	25 tokens to the interval 81 to 90 <br><br>
+The potential payoffs for this allocation are shown below:
+    <br><br>
+    <img src="{{ static 'pilot_image_2.png' }}" class="center"/>
+<br>
+    <p>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="1">Next</button>
+    </p>
+</div>
+<div class="tab">
+    <p style="font-size:160%;"><b>Example 2:</b></p>
+    <img src="{{ static 'pilot_image_2.png' }}" class="center"/>
+    <br>
+    As you allocated the most tokens to the interval from 71 to 80, if the true answer were in this range,
+    you would receive your highest potential payoff for this allocation of tokens, $16.25.
+    You would earn $11.25 if the true answer is actually between 61 and 70, $11.25 if it is between 81 and 90,
+    and $6.25 if the true answer is any other number.
+    <br><br>
+    You can adjust the tokens as much as you want to best reflect your personal beliefs about US life expectancy.
+    Your earnings depend on your reported beliefs and, of course, the true answer.
+    <br><br>
+    For instance, in the figure shown above, the true life expectancy at birth in the United States is 77 years
+    according to 2020 CDC statistics. So, if you had reported the beliefs shown above, you would have earned $16.25.
+    <br><br>
+    <p>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="1">Next</button>
+    </p>
+</div>
+<div class="tab">
+    <p style="font-size:160%;"><b>Example 3:</b></p>
+    Suppose you had “put all of your eggs in one basket”,
+    and for example allocated 100 tokens to the interval corresponding to 71 to 80.
+    Then you would have faced the earnings outcomes shown below,
+    and earned $20, as the true answer is 77.
+    Note, if you had instead allocated all 100 tokens to any one other bin, your payoff would have been $0.
+    <br><br>
+    <img src="{{ static 'pilot_image_3.png' }}" class="center"/>
+    <br>
+    <p>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="1">Next</button>
+    </p>
+</div>
+<div class="tab">
+    <p style="font-size:160%;"><b>Example 4:</b></p>
+    Now, suppose you think life expectancy in the United States is between 51 and 90 years,
+    but among these answers,
+    you are not sure any one bin from 51 to 90 is more likely to contain the true answer than another.
+    In that case, you might allocate 25 tokens to each of the four bins that span 51 to 90 years.
+    In this case, your potential payoffs would be below, and you would have earned $12.50.
+    <br><br>
+    <img src="{{ static 'pilot_image_4.png' }}" class="center"/>
+    <br>
+    <p>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="1">Next</button>
+    </p>
+</div>
+<div class="tab">
+    Using the information you provided in the demographic survey,
+    questions will be asked using statistical estimates based on people like you.
+    For example, instead of being asked about the life expectancy for all people in the United States,
+    you might be asked about the average life expectancy among all people in the United States who share your
+    gender, age group, and BMI.
+    <br><br>
+    It is up to you to balance the strength of your personal beliefs with the risk of them being wrong.
+    There are three important points for you to keep in mind when making your decisions:
+    <br><br>
+•	Your belief about the correct answer to each question is a personal judgment that depends on your
+    own knowledge and understanding.<br>
+•	Depending on your choices and the correct answer, you can earn up to $20.<br>
+•	Your choices might also depend on your willingness to take risks or to gamble.
+    <br><br>
+    The decisions you make are a matter of personal choice.
+    Please work silently, and make your choices by thinking carefully about the questions you are presented with.
+    <br><br>
+    When you are happy with your decisions, you should click on the Submit button and confirm your choices.
+    After each question, the correct bin will be revealed to you,
+    and your potential payoff for that question will be displayed.
+    After all questions are completed,
+    an experimenter will come to you and ask you to roll a die to determine which question you will be paid for.
+    The experimenter will record your earnings according to the correct answer and the choices you made.
+    <br><br>
+    All payoffs are in cash, and are in addition to the show-up fee that you receive just for being here.
+    <br><br>
+    If you have any questions about the upcoming tasks, please either review the previous information provided here,
+    or raise your hand and ask an experimenter. If you fully understand the instructions, please continue onto the
+    decision-making tasks.
+    <br><br>
+    <p>
+        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>
+        <button class="btn btn-primary">Next</button>
+    </p>
+</div>
+<!--<div class="tab">-->
+<!--    &lt;!&ndash; Duplicate this div if you have more than 3 pages of instructions ... &ndash;&gt;-->
+<!--    instructions middle page content goes here.-->
+<!--    <p>-->
+<!--        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>-->
+<!--        <button type="button" class="btn btn-primary btn-tab" data-offset="1">Next</button>-->
+<!--    </p>-->
+<!--</div>-->
+<!--<div class="tab">-->
+<!--    instructions last page content goes here...-->
+<!--    <p>-->
+<!--        <button type="button" class="btn btn-primary btn-tab" data-offset="-1">Previous</button>-->
+<!--        <button class="btn btn-primary">Next</button>-->
+<!--    </p>-->
+<!--</div>-->
+
+<script>
+
+    let activeTab = 0;
+
+    function showCurrentTabOnly() {
+        let tabIndex = 0;
+        for (let tab of document.getElementsByClassName('tab')) {
+            tab.style.display = tabIndex === activeTab ? 'block' : 'none';
+            tabIndex++;
+        }
+    }
+
+    showCurrentTabOnly();
+    for (let btn of document.getElementsByClassName('btn-tab')) {
+        btn.onclick = function () {
+            activeTab += parseInt(btn.dataset.offset);
+            showCurrentTabOnly();
+        }
+    }
+</script>
+
+{{ endblock }}

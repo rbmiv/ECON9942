@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Your Final Payment
+{% endblock %}
+
+{% block content %}
+The <b>{{ question_label }}</b> task was chosen at random for your final payment. <br>
+Your payoff for this task was: {{ task_payoff }} <br>
+Your participation payment is: {{ participation_payment }}<br><br>
+Therefore, your <b>total payoff</b> is: {{ total_payoff }}
+<br><br>
+Thank you for participating in today's experiment.<br><br>
+
+    {% next_button %}
+{% endblock %}

@@ -25,7 +25,7 @@ class Constants(BaseConstants):
     name_in_url = 'trust'
     players_per_group = 2
     num_rounds = 1
-    instructions_template = 'trust/instructions.html'
+    instructions_template = 'trust/Results.html'
     # Initial amount allocated to each player
     endowment = c(100)
     multiplier = 3

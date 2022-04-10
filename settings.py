@@ -6,127 +6,64 @@ SESSION_CONFIGS = [
         'language': 'english',
         'display_name': 'health beliefs practice questions',
         'num_demo_participants': 15,
-        'app_sequence': ['survey', 'health_beliefs'],
+        'app_sequence': ['survey', 'instructions', 'health_beliefs', 'results'], #SUBJECT INSTRUCTIONS AND RESULTS PAGES GO HERE
         # params format: [ 'question text...',
         #               alpha, beta, num_tokens
         #               ['bin 1 label', 'bin 2 label', ... 'bin N label'],
         #               color, correct bin index]
-        'params': [
-            ['smoking',
-             'Among 100 cigarette smokers, how many of them do you think will get lung cancer'
-             ' because they smoke?',
-             5, 5, 100,
-             ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '91-100'],
-             '--blue', 1],
-
+        'params':
+        [
             ['diabetes',
              'Among 100 people like you (sharing the same age group, bmi, and biological sex), '
              'how many do you expect to have ever had diabetes?',
-             5, 5, 100,
+             10, 10, 100,
              ['0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '40 or more'],
              '--blue', 0],
 
-            ['heart_condition',
+            ['heart_disease',
              'Among 100 people like you (sharing the same age group, bmi, and biological sex), '
              'how many do you expect to have ever had a heart problem (heart attack, coronary heart disease, angina)?',
-             5, 5, 100,
+             10, 10, 100,
              ['0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '40 or more'],
              '--blue', 0],
+#
+            ['skin_cancer',
+             'Among 100 people like you (sharing the same race and age group),'
+             'how many do you expect to have ever been diagnosed with skin cancer?',
+             10, 10, 100,
+             ['0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '40 or more'],
+             '--blue', 0],
+
+            ['other_cancer',
+             'Among 100 people like you (sharing the same age group, bmi, and biological sex), '
+             'how many do you expect to have ever been diagnosed with any type of cancer (other than skin cancer)?',
+             10, 10, 100,
+             ['0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '40 or more'],
+             '--blue', 0],
+
+            ['stroke',
+             'Among 100 people like you (sharing the same age group, bmi, and biological sex), '
+             'how many do you expect to have ever had a stroke ?',
+             10, 10, 100,
+             ['0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '40 or more'],
+             '--blue', 0],
+
+            ['arthritis',
+             'Among 100 people like you (sharing the same age group, bmi, and biological sex), '
+             'how many do you expect to have ever had some form of '
+             'arthritis, rheumatoid arthritis, gout, lupus, or fibromyalgia? ',
+             10, 10, 100,
+             ['0-5', '6-10', '11-15', '16-20', '21-25', '26-30', '31-35', '36-40', '40 or more'],
+             '--blue', 0],
+
+            ['smoking',
+             'Among 100 cigarette smokers, how many of them do you think will get lung cancer '
+             ' because they smoke?',
+             10, 10, 100,
+             ['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '91-100'],
+             '--blue', 1],
         ]
     },
-    dict(
-        name='sortable_list',
-        display_name='sortable list',
-        num_demo_participants=1,
-        app_sequence=['sortable_list'],
-    ),
-
-    dict(
-        name='pub_goods_test',
-        display_name='my pub goods',
-        num_demo_participants=2,
-        app_sequence=['my_pub_goods'],
-    ),
-    dict(
-        name='my_public_goods',
-        display_name='Bens Public Goods Test',
-        num_demo_participants=4,
-        app_sequence=['my_public_goods', 'payment_info'],
-    ),
-    dict(
-        name='second_price_auction',
-        display_name='second price auction',
-        num_demo_participants=3,
-        app_sequence=['second_price_auction'],
-    ),
-    dict(
-        name='input_examples',
-        display_name='examples of different inputs',
-        num_demo_participants=1,
-        app_sequence=['input_examples'],
-    ),
-    dict(
-        name='livepage1',
-        display_name='our first live page example',
-        num_demo_participants=2,
-        app_sequence=['baby_livepage'],
-    ),
-    dict(
-        name='live_pages',
-        display_name='simple live pages demo',
-        num_demo_participants=2,
-        app_sequence=['live_pages_demo'],
-    ),
-    dict(
-        name='images_1',
-        display_name='randomizing image sequences',
-        num_demo_participants=3,
-        app_sequence=['parameters_example'],
-        images=['duck.png', 'fish.jpg', 'pinguin.jpg']
-    ),
-    dict(
-        name='circle',
-        display_name='circle demo',
-        num_demo_participants=1,
-        app_sequence=['circle_example']
-
-    ),
-    dict(
-        name='mpl_1',
-        display_name='multiple price list example',
-        num_demo_participants=1,
-        app_sequence=['mpl_example'],
-    ),
-    dict(
-        name='regroup',
-        display_name='demo regrouping subjects during session',
-        num_demo_participants=6,
-        app_sequence=['regroup'],
-    ),
-    dict(
-        name='video_demo',
-        display_name='video demo',
-        num_demo_participants=2,
-        app_sequence=['video'],
-    ),
-    dict(
-        name='template_looping',
-        display_name='template looping',
-        num_demo_participants=1,
-        app_sequence=['template_looping'],
-    ),
-    dict(
-        name='check_time',
-        display_name='check time',
-        num_demo_participants=1,
-        app_sequence=['check_time'],
-    ),
-    dict(
-        name='custom_waitpage',
-        display_name='custom waitpage example',
-        num_demo_participants=2,
-        app_sequence=['custom_waitpage'],
-    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -135,10 +72,18 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=1.00, participation_fee=5.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ['age', 'age_group', 'height', 'weight','bmi', 'bmi_cat', 'gender']
+PARTICIPANT_FIELDS = ['age', 'age_group', 'height', 'weight', 'bmi', 'bmi_cat', 'gender', 'race',
+                      'correct_bin_ar', 'answer_bin_ar', 'payoff_ar', 'correct_label_ar',
+                      'correct_bin_hd', 'answer_bin_hd', 'payoff_hd', 'correct_label_hd',
+                      'correct_bin_sc', 'answer_bin_sc', 'payoff_sc', 'correct_label_sc',
+                      'correct_bin_oc', 'answer_bin_oc', 'payoff_oc', 'correct_label_oc',
+                      'correct_bin_di', 'answer_bin_di', 'payoff_di', 'correct_label_di',
+                      'correct_bin_st', 'answer_bin_st', 'payoff_st', 'correct_label_st',
+                      'correct_bin_sm', 'answer_bin_sm', 'payoff_sm', 'correct_label_sm',
+                      ]
 SESSION_FIELDS = []
 
 # ISO-639 code

@@ -23,7 +23,7 @@ class Constants(BaseConstants):
     num_rounds = 1
     endowment = c(10)
     multiplier = 3
-    instructions_template = 'trust_simple/instructions.html'
+    instructions_template = 'trust_simple/Results.html'
 
 
 class Subsession(BaseSubsession):

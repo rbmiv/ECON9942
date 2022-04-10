@@ -9,15 +9,17 @@ c = Currency
 doc = """
 
 """
-#test
+
+
+# test
 
 
 class Constants(BaseConstants):
     name_in_url = 'health_beliefs'
     players_per_group = None
-    num_rounds = 3
-    alpha = 5
-    beta = 5
+    num_rounds = 7
+    alpha = 10
+    beta = 10
     num_tokens = 100
     color = '--blue'
 
@@ -47,6 +49,7 @@ class Player(BasePlayer):
     response = models.StringField(initial=-999)
     bin_labels = models.StringField()
     correct_bin = models.StringField()
+    correct_label = models.StringField()
     enumerator_id = models.StringField(label="Enumerator ID")
 
 
@@ -56,8 +59,6 @@ def creating_session(subsession):
     if subsession.round_number == 1:
         subsession.session.vars['last_round'] = len(subsession.session.config['params'])
         # print(subsession.session.vars)
-
-
 
     for p in subsession.get_players():
         if subsession.round_number == 1:
@@ -78,6 +79,7 @@ def creating_session(subsession):
             p.color = json.dumps([question[6]])
             p.correct_index = question[7]
             p.correct_label = json.dumps(question[5])
+
 
 # PAGES
 
@@ -107,68 +109,33 @@ class Beliefs(Page):
         response_list = response_list.replace('[', '')
         response_list = response_list.split(',')
         response_list = list(map(int, response_list))
+        bin_labels_list = player.bin_labels
+        bin_labels_list = bin_labels_list.replace(']', '')
+        bin_labels_list = bin_labels_list.replace('[', '')
+        bin_labels_list = bin_labels_list.replace('"', '')
+        bin_labels_list = bin_labels_list.split(',')
 
-        print(player.payoff)
-        print(player.bin_labels)
-        print(player.response)
-        print(player.qid)
-        print(player.correct_index)
-        print(player.bin_labels)
-
-        df = pd.read_csv('health_beliefs/subpopmeans.csv')
-
+        if player.qid == 'arthritis':
+            player.correct_index = player.participant.correct_bin_ar
+            player.participant.correct_label_ar = bin_labels_list[player.correct_index]
+        if player.qid == 'heart_disease':
+            player.correct_index = player.participant.correct_bin_hd
+            player.participant.correct_label_hd = bin_labels_list[player.correct_index]
+        if player.qid == 'skin_cancer':
+            player.correct_index = player.participant.correct_bin_sc
+            player.participant.correct_label_sc = bin_labels_list[player.correct_index]
+        if player.qid == 'other_cancer':
+            player.correct_index = player.participant.correct_bin_oc
+            player.participant.correct_label_oc = bin_labels_list[player.correct_index]
         if player.qid == 'diabetes':
-
-            subpopmean = 100 *  df[(df['Female'] == player.participant.gender) &
-                                 (df['Age group'] == player.participant.age_group) &
-                                 (df['BMI category'] == player.participant.bmi_cat) &
-                                 (df['EverDiabetes'] == 1)].iloc[0]['Mean']
-            print(subpopmean)
-            if subpopmean <= 5:
-                player.correct_index = 0
-            elif subpopmean <= 10:
-                player.correct_index = 1
-            elif subpopmean <= 15:
-                player.correct_index = 2
-            elif subpopmean <= 20:
-                player.correct_index = 3
-            elif subpopmean <= 25:
-                player.correct_index = 4
-            elif subpopmean <= 30:
-                player.correct_index = 5
-            elif subpopmean <= 35:
-                player.correct_index = 6
-            elif subpopmean <= 40:
-                player.correct_index = 7
-            else:
-                player.correct_index = 8
-
-        if player.qid == 'heart_condition':
-            subpopmean = 100 * df[(df['Female'] == player.participant.gender) &
-                                 (df['Age group'] == player.participant.age_group) &
-                                 (df['BMI category'] == player.participant.bmi_cat) &
-                                 (df['EverHeartCondition'] == 1)].iloc[0]['Mean']
-            print(subpopmean)
-            if subpopmean <= 5:
-                player.correct_index = 0
-            elif subpopmean <= 10:
-                player.correct_index = 1
-            elif subpopmean <= 15:
-                player.correct_index = 2
-            elif subpopmean <= 20:
-                player.correct_index = 3
-            elif subpopmean <= 25:
-                player.correct_index = 4
-            elif subpopmean <= 30:
-                player.correct_index = 5
-            elif subpopmean <= 35:
-                player.correct_index = 6
-            elif subpopmean <= 40:
-                player.correct_index = 7
-            else: player.correct_index = 8
-        print(player.correct_index)
-        print(response_list)
-        print(player.participant.gender, player.participant.age_group, player.participant.bmi_cat)
+            player.correct_index = player.participant.correct_bin_di
+            player.participant.correct_label_di = bin_labels_list[player.correct_index]
+        if player.qid == 'stroke':
+            player.correct_index = player.participant.correct_bin_st
+            player.participant.correct_label_st = bin_labels_list[player.correct_index]
+        if player.qid == 'smoking':
+            player.correct_index = 1
+            player.participant.correct_label_sm = bin_labels_list[1]
 
         ss = 0
         for i in range(len(response_list)):
@@ -177,25 +144,47 @@ class Beliefs(Page):
                 Constants.alpha +
                 Constants.beta * ((2 * response_list[player.correct_index] / Constants.num_tokens) - ss)
         )
+        if player.qid == 'arthritis':
+            player.participant.answer_bin_ar = response_list[player.correct_index]
+            player.participant.payoff_ar = player.payoff
+        if player.qid == 'heart_disease':
+            player.participant.answer_bin_hd = response_list[player.correct_index]
+            player.participant.payoff_hd = player.payoff
+        if player.qid == 'skin_cancer':
+            player.participant.answer_bin_sc = response_list[player.correct_index]
+            player.participant.payoff_sc = player.payoff
+        if player.qid == 'other_cancer':
+            player.participant.answer_bin_oc = response_list[player.correct_index]
+            player.participant.payoff_oc = player.payoff
+        if player.qid == 'diabetes':
+            player.participant.answer_bin_di = response_list[player.correct_index]
+            player.participant.payoff_di = player.payoff
+        if player.qid == 'stroke':
+            player.participant.answer_bin_st = response_list[player.correct_index]
+            player.participant.payoff_st = player.payoff
+        if player.qid == 'smoking':
+            player.participant.answer_bin_sm = response_list[player.correct_index]
+            player.participant.payoff_sm = player.payoff
+        print('=======before next page:', player.qid, '========')
+        print('player payoff: ', player.payoff)
+        print('question correct index: ', player.correct_index)
 
 
-
-class Results(Page):
-    @staticmethod
-    def vars_for_template(player: Player):
-        bin_labels_list = player.bin_labels
-        bin_labels_list = bin_labels_list.replace(']', '')
-        bin_labels_list = bin_labels_list.replace('[', '')
-        bin_labels_list = bin_labels_list.split(',')
-        response_list = player.response.replace(']', '')
-        response_list = response_list.replace('[', '')
-        response_list = response_list.split(',')
-        response_list = list(map(int, response_list))
-        df = pd.read_csv('health_beliefs/subpopmeans.csv')
-        return dict(
-            correct_label=bin_labels_list[player.correct_index],
-            correct_response=response_list[player.correct_index]
-        )
+# class Results(Page):
+#     @staticmethod
+#     def vars_for_template(player: Player):
+#         bin_labels_list = player.bin_labels
+#         bin_labels_list = bin_labels_list.replace(']', '')
+#         bin_labels_list = bin_labels_list.replace('[', '')
+#         bin_labels_list = bin_labels_list.split(',')
+#         response_list = player.response.replace(']', '')
+#         response_list = response_list.replace('[', '')
+#         response_list = response_list.split(',')
+#         response_list = list(map(int, response_list))
+#         return dict(
+#             correct_label=bin_labels_list[player.correct_index],
+#             correct_response=response_list[player.correct_index]
+#         )
 
 
-page_sequence = [Beliefs, Results]
+page_sequence = [Beliefs]

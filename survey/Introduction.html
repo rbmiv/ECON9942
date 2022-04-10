@@ -1,0 +1,58 @@
+{{ block title }}
+Experiment Instructions
+{{ endblock }}
+{{ block content }}
+
+<style>
+    .tab {
+        display: none;
+    }
+</style>
+<div class="tab">
+        You are now participating in a decision-making experiment. Based on your decisions in this experiment, you can earn
+    money that will be paid to you in cash today. It is important that you understand all instructions before making
+    your choices in this experiment. If at any point you have a question, please raise your hand and we will answer
+    you as soon as possible.
+    <br><br>
+    The experiment consists of a demographic survey and six decision-making tasks. You have already earned
+    [participation payment] for agreeing to participate in the experiment, which will be paid to you in cash at the
+    end of the session. In addition to this participation payment, you may earn considerably more from your choices in
+    the decision-making tasks. These tasks and the potential earnings from them will be explained in detail as we
+    proceed through the session.
+    <br><br>
+    We will begin the experiment by asking you to answer some demographic questions.  After the demographic questions,
+    you will be given a task where you will be paid according to how accurate your beliefs are about certain things.
+    You will be presented with six tasks. We will explain how to complete the tasks after you have filled out the
+    demographic survey.
+    <br><br>
+    In addition to your show-up fee, you will receive the winnings from one of the questions you answer,
+    selected at random, so you should think carefully about your answer to each question,
+    as any question could be chosen for your payment.
+    <br><br>
+    <p>
+        <button class="btn btn-primary">Next</button>
+    </p>
+</div>
+
+<script>
+
+    let activeTab = 0;
+
+    function showCurrentTabOnly() {
+        let tabIndex = 0;
+        for (let tab of document.getElementsByClassName('tab')) {
+            tab.style.display = tabIndex === activeTab ? 'block' : 'none';
+            tabIndex++;
+        }
+    }
+
+    showCurrentTabOnly();
+    for (let btn of document.getElementsByClassName('btn-tab')) {
+        btn.onclick = function () {
+            activeTab += parseInt(btn.dataset.offset);
+            showCurrentTabOnly();
+        }
+    }
+</script>
+
+{{ endblock }}

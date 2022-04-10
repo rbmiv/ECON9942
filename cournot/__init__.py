@@ -23,7 +23,7 @@ class Constants(BaseConstants):
     name_in_url = 'cournot'
     players_per_group = 2
     num_rounds = 1
-    instructions_template = 'cournot/instructions.html'
+    instructions_template = 'cournot/Results.html'
     # Total production capacity of all players
     total_capacity = 60
     max_units_per_player = int(total_capacity / players_per_group)

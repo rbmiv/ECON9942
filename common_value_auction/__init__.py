@@ -26,7 +26,7 @@ class Constants(BaseConstants):
     name_in_url = 'common_value_auction'
     players_per_group = None
     num_rounds = 1
-    instructions_template = 'common_value_auction/instructions.html'
+    instructions_template = 'common_value_auction/Results.html'
     min_allowable_bid = c(0)
     max_allowable_bid = c(10)
     # Error margin for the value estimates shown to the players

@@ -25,7 +25,7 @@ class Constants(BaseConstants):
     name_in_url = 'guess_two_thirds'
     jackpot = Currency(100)
     guess_max = 100
-    instructions_template = 'guess_two_thirds/instructions.html'
+    instructions_template = 'guess_two_thirds/Results.html'
 
 
 class Subsession(BaseSubsession):

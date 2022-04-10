@@ -1,0 +1,47 @@
+{{ block title }}
+Experiment Instructions
+{{ endblock }}
+{{ block content }}
+
+<style>
+    .tab {
+        display: none;
+    }
+</style>
+<div class="tab">
+    You will now begin the decision task portion of the experiment. You will be presented with six questions,
+    and your answers to these questions will determine how much money you will earn today in addition to your
+    participation payment.
+    <br><br>
+    Here is an example of what the computer display of a question will look like:
+    <br><br>
+    <p style="font-size:160%;"><b>Example 1:</b></p>
+    <img src="{{ static 'pilot_image_1.png' }}" class="center"/>
+    <br><br>
+    <p>
+        <button class="btn btn-primary">Next</button>
+    </p>
+</div>
+
+<script>
+
+    let activeTab = 0;
+
+    function showCurrentTabOnly() {
+        let tabIndex = 0;
+        for (let tab of document.getElementsByClassName('tab')) {
+            tab.style.display = tabIndex === activeTab ? 'block' : 'none';
+            tabIndex++;
+        }
+    }
+
+    showCurrentTabOnly();
+    for (let btn of document.getElementsByClassName('btn-tab')) {
+        btn.onclick = function () {
+            activeTab += parseInt(btn.dataset.offset);
+            showCurrentTabOnly();
+        }
+    }
+</script>
+
+{{ endblock }}
